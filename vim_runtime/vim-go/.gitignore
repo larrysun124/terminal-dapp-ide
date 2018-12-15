@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 .DS_Store
 /doc/tags
 /.coverage.covimerage
 /coverage.xml
 *.pyc
+=======
+doc/tags
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d

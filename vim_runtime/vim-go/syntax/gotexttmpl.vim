@@ -6,7 +6,11 @@
 
 " Quit when a (custom) syntax file was already loaded
 if exists("b:current_syntax")
+<<<<<<< HEAD
   finish
+=======
+    finish
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endif
 
 syn case match
@@ -74,12 +78,21 @@ hi def link     goTplVariable       Special
 
 syn region gotplAction start="{{" end="}}" contains=@gotplLiteral,gotplControl,gotplFunctions,gotplVariable,goTplIdentifier display
 syn region gotplAction start="\[\[" end="\]\]" contains=@gotplLiteral,gotplControl,gotplFunctions,gotplVariable display
+<<<<<<< HEAD
 syn region goTplComment start="{{\(- \)\?/\*" end="\*/\( -\)\?}}" display
 syn region goTplComment start="\[\[\(- \)\?/\*" end="\*/\( -\)\?\]\]" display
+=======
+syn region goTplComment start="{{/\*" end="\*/}}" display
+syn region goTplComment start="\[\[/\*" end="\*/\]\]" display
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 
 hi def link gotplAction PreProc
 hi def link goTplComment Comment
 
 let b:current_syntax = "gotexttmpl"
 
+<<<<<<< HEAD
 " vim: sw=2 ts=2 et
+=======
+" vim:ts=4:sw=4:et
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d

@@ -5,21 +5,32 @@
 " which by default is enabled. For commands the user has the ability to pass
 " the '!', such as :GoBuild or :GoBuild!
 if !exists("g:go_jump_to_error")
+<<<<<<< HEAD
   let g:go_jump_to_error = 1
+=======
+	let g:go_jump_to_error = 1
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endif
 
 " Some handy plug mappings
 nnoremap <silent> <Plug>(go-run) :<C-u>call go#cmd#Run(!g:go_jump_to_error)<CR>
 
 if has("nvim")
+<<<<<<< HEAD
   nnoremap <silent> <Plug>(go-run-vertical) :<C-u>call go#cmd#RunTerm(!g:go_jump_to_error, 'vsplit', [])<CR>
   nnoremap <silent> <Plug>(go-run-split) :<C-u>call go#cmd#RunTerm(!g:go_jump_to_error, 'split', [])<CR>
   nnoremap <silent> <Plug>(go-run-tab) :<C-u>call go#cmd#RunTerm(!g:go_jump_to_error, 'tabe', [])<CR>
+=======
+	nnoremap <silent> <Plug>(go-run-vertical) :<C-u>call go#cmd#RunTerm(!g:go_jump_to_error, 'vsplit', [])<CR>
+	nnoremap <silent> <Plug>(go-run-split) :<C-u>call go#cmd#RunTerm(!g:go_jump_to_error, 'split', [])<CR>
+	nnoremap <silent> <Plug>(go-run-tab) :<C-u>call go#cmd#RunTerm(!g:go_jump_to_error, 'tabe', [])<CR>
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endif
 
 nnoremap <silent> <Plug>(go-build) :<C-u>call go#cmd#Build(!g:go_jump_to_error)<CR>
 nnoremap <silent> <Plug>(go-generate) :<C-u>call go#cmd#Generate(!g:go_jump_to_error)<CR>
 nnoremap <silent> <Plug>(go-install) :<C-u>call go#cmd#Install(!g:go_jump_to_error)<CR>
+<<<<<<< HEAD
 nnoremap <silent> <Plug>(go-test) :<C-u>call go#test#Test(!g:go_jump_to_error, 0)<CR>
 nnoremap <silent> <Plug>(go-test-func) :<C-u>call go#test#Func(!g:go_jump_to_error)<CR>
 nnoremap <silent> <Plug>(go-test-compile) :<C-u>call go#test#Test(!g:go_jump_to_error, 1)<CR>
@@ -61,6 +72,33 @@ nnoremap <silent> <Plug>(go-def-tab) :<C-u>call go#def#Jump("tab")<CR>
 nnoremap <silent> <Plug>(go-def-pop) :<C-u>call go#def#StackPop()<CR>
 nnoremap <silent> <Plug>(go-def-stack) :<C-u>call go#def#Stack()<CR>
 nnoremap <silent> <Plug>(go-def-stack-clear) :<C-u>call go#def#StackClear()<CR>
+=======
+nnoremap <silent> <Plug>(go-test) :<C-u>call go#cmd#Test(!g:go_jump_to_error, 0)<CR>
+nnoremap <silent> <Plug>(go-test-func) :<C-u>call go#cmd#TestFunc(!g:go_jump_to_error)<CR>
+nnoremap <silent> <Plug>(go-test-compile) :<C-u>call go#cmd#Test(!g:go_jump_to_error, 1)<CR>
+nnoremap <silent> <Plug>(go-coverage) :<C-u>call go#cmd#Coverage(!g:go_jump_to_error)<CR>
+
+nnoremap <silent> <Plug>(go-files) :<C-u>call go#tool#Files()<CR>
+nnoremap <silent> <Plug>(go-deps) :<C-u>call go#tool#Deps()<CR>
+nnoremap <silent> <Plug>(go-info) :<C-u>call go#complete#Info(0)<CR>
+nnoremap <silent> <Plug>(go-import) :<C-u>call go#import#SwitchImport(1, '', expand('<cword>'), '')<CR>
+
+nnoremap <silent> <Plug>(go-implements) :<C-u>call go#oracle#Implements(-1)<CR>
+nnoremap <silent> <Plug>(go-callees) :<C-u>call go#oracle#Callees(-1)<CR>
+nnoremap <silent> <Plug>(go-callers) :<C-u>call go#oracle#Callers(-1)<CR>
+nnoremap <silent> <Plug>(go-describe) :<C-u>call go#oracle#Describe(-1)<CR>
+nnoremap <silent> <Plug>(go-callstack) :<C-u>call go#oracle#Callstack(-1)<CR>
+nnoremap <silent> <Plug>(go-freevars) :<C-u>call go#oracle#Freevars(-1)<CR>
+nnoremap <silent> <Plug>(go-channelpeers) :<C-u>call go#oracle#ChannelPeers(-1)<CR>
+nnoremap <silent> <Plug>(go-referrers) :<C-u>call go#oracle#Referrers(-1)<CR>
+
+nnoremap <silent> <Plug>(go-rename) :<C-u>call go#rename#Rename(!g:go_jump_to_error)<CR>
+
+nnoremap <silent> <Plug>(go-def) :<C-u>call go#def#Jump()<CR>
+nnoremap <silent> <Plug>(go-def-vertical) :<C-u>call go#def#JumpMode("vsplit")<CR>
+nnoremap <silent> <Plug>(go-def-split) :<C-u>call go#def#JumpMode("split")<CR>
+nnoremap <silent> <Plug>(go-def-tab) :<C-u>call go#def#JumpMode("tab")<CR>
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 
 nnoremap <silent> <Plug>(go-doc) :<C-u>call go#doc#Open("new", "split")<CR>
 nnoremap <silent> <Plug>(go-doc-tab) :<C-u>call go#doc#Open("tabnew", "tabe")<CR>
@@ -68,14 +106,21 @@ nnoremap <silent> <Plug>(go-doc-vertical) :<C-u>call go#doc#Open("vnew", "vsplit
 nnoremap <silent> <Plug>(go-doc-split) :<C-u>call go#doc#Open("new", "split")<CR>
 nnoremap <silent> <Plug>(go-doc-browser) :<C-u>call go#doc#OpenBrowser()<CR>
 
+<<<<<<< HEAD
 nnoremap <silent> <Plug>(go-metalinter) :<C-u>call go#lint#Gometa(!g:go_jump_to_error, 0)<CR>
 nnoremap <silent> <Plug>(go-lint) :<C-u>call go#lint#Golint(!g:go_jump_to_error)<CR>
+=======
+nnoremap <silent> <Plug>(go-metalinter) :<C-u>call go#lint#Gometa(0)<CR>
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 nnoremap <silent> <Plug>(go-vet) :<C-u>call go#lint#Vet(!g:go_jump_to_error)<CR>
 
 nnoremap <silent> <Plug>(go-alternate-edit) :<C-u>call go#alternate#Switch(0, "edit")<CR>
 nnoremap <silent> <Plug>(go-alternate-vertical) :<C-u>call go#alternate#Switch(0, "vsplit")<CR>
 nnoremap <silent> <Plug>(go-alternate-split) :<C-u>call go#alternate#Switch(0, "split")<CR>
+<<<<<<< HEAD
 
 nnoremap <silent> <Plug>(go-iferr) :<C-u>call go#iferr#Generate()<CR>
 
 " vim: sw=2 ts=2 et
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d

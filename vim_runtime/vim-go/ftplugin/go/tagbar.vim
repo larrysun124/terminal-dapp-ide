@@ -4,6 +4,7 @@
 " Also make sure the ctags command exists
 "
 if !executable('ctags')
+<<<<<<< HEAD
   finish
 elseif globpath(&rtp, 'plugin/tagbar.vim') == ""
   finish
@@ -15,10 +16,20 @@ set cpo&vim
 
 if !exists("g:go_gotags_bin")
   let g:go_gotags_bin = "gotags"
+=======
+	finish
+elseif globpath(&rtp, 'plugin/tagbar.vim') == ""
+	finish
+endif
+
+if !exists("g:go_gotags_bin")
+	let g:go_gotags_bin = "gotags"
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endif
 
 
 function! s:SetTagbar()
+<<<<<<< HEAD
   let bin_path = go#path#CheckBinPath(g:go_gotags_bin)
   if empty(bin_path)
     return
@@ -53,13 +64,52 @@ function! s:SetTagbar()
           \ 'ctagsargs' : '-sort -silent'
           \ }
   endif
+=======
+	let bin_path = go#path#CheckBinPath(g:go_gotags_bin) 
+	if empty(bin_path) 
+		return 
+	endif
+
+	if !exists("g:tagbar_type_go")
+		let g:tagbar_type_go = {
+					\ 'ctagstype' : 'go',
+					\ 'kinds'     : [
+					\ 'p:package',
+					\ 'i:imports',
+					\ 'c:constants',
+					\ 'v:variables',
+					\ 't:types',
+					\ 'n:interfaces',
+					\ 'w:fields',
+					\ 'e:embedded',
+					\ 'm:methods',
+					\ 'r:constructor',
+					\ 'f:functions'
+					\ ],
+					\ 'sro' : '.',
+					\ 'kind2scope' : {
+					\ 't' : 'ctype',
+					\ 'n' : 'ntype'
+					\ },
+					\ 'scope2kind' : {
+					\ 'ctype' : 't',
+					\ 'ntype' : 'n'
+					\ },
+					\ 'ctagsbin'  : expand(bin_path),
+					\ 'ctagsargs' : '-sort -silent'
+					\ }
+	endif
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endfunction
 
 
 call s:SetTagbar()
+<<<<<<< HEAD
 
 " restore Vi compatibility settings
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
 " vim: sw=2 ts=2 et
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d

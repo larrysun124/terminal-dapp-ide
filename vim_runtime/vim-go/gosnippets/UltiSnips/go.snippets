@@ -110,7 +110,11 @@ snippet gpl
 * You should have received a copy of the GNU General Public License
 * along with this program; if not, see <http://www.gnu.org/licenses/>.
 *
+<<<<<<< HEAD
 * Copyright (C) ${1:Author}, `!v strftime("%Y")`
+=======
+* Copyright (C) ${1:Author}, `strftime("%Y")`
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 */
 ${0}
 endsnippet
@@ -143,6 +147,7 @@ else {
 }
 endsnippet
 
+<<<<<<< HEAD
 # if inline error
 snippet ife "If with inline erro"
 if err := ${1:condition}; err != nil {
@@ -150,6 +155,8 @@ if err := ${1:condition}; err != nil {
 }
 endsnippet
 
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 # error snippet
 snippet errn "Error return " !b
 if err != nil {
@@ -158,14 +165,22 @@ if err != nil {
 ${0}
 endsnippet
 
+<<<<<<< HEAD
 # error log snippet
 snippet errl "Error with log.Fatal(err)" !b
 if err != nil {
 	log.Fatal(err)
+=======
+# error snippet
+snippet errt "Error test fatal " !b
+if err != nil {
+	t.Fatal(err)
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 }
 ${0}
 endsnippet
 
+<<<<<<< HEAD
 # error multiple return
 snippet errn, "Error return with two return values" !b
 if err != nil {
@@ -178,10 +193,16 @@ endsnippet
 snippet errp "Error panic" !b
 if err != nil {
 	panic(${1})
+=======
+snippet errn, "Error return with two return values" !b
+if err != nil {
+	return ${1:nil}, err
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 }
 ${0}
 endsnippet
 
+<<<<<<< HEAD
 # error test
 snippet errt "Error test fatal " !b
 if err != nil {
@@ -191,6 +212,8 @@ ${0}
 endsnippet
 
 # error handle
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 snippet errh "Error handle and return" !b
 if err != nil {
 	${1}
@@ -199,6 +222,7 @@ if err != nil {
 ${0}
 endsnippet
 
+<<<<<<< HEAD
 # json field tag
 snippet json "\`json:key\`"
 \`json:"${1:`!v  go#util#snippetcase(matchstr(getline("."), '\w\+'))`}"\`
@@ -207,6 +231,10 @@ endsnippet
 # yaml field tag
 snippet yaml "\`yaml:key\`"
 \`yaml:"${1:`!v  go#util#snippetcase(matchstr(getline("."), '\w\+'))`}"\`
+=======
+snippet json "\`json:key\`"
+\`json:"${1:keyName}"\`
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endsnippet
 
 # fallthrough
@@ -252,11 +280,14 @@ snippet fn "fmt.Println(...)"
 fmt.Println("${1:${VISUAL}}")
 endsnippet
 
+<<<<<<< HEAD
 # Fmt Errorf debug
 snippet fe "fmt.Errorf(...)"
 fmt.Errorf("${1:${VISUAL}}")
 endsnippet
 
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 # log printf
 snippet lf "log.Printf(...)"
 log.Printf("${1:${VISUAL}} = %+v\n", $1)
@@ -363,6 +394,7 @@ func Test${1:Function}(t *testing.T) {
 }
 endsnippet
 
+<<<<<<< HEAD
 # test table snippet
 snippet tt
 var tests = []struct {
@@ -397,6 +429,8 @@ ${1:http}.HandleFunc("${2:/}", func(w http.ResponseWriter, r *http.Request) {
 })
 endsnippet
 
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 # quick test server
 snippet tsrv "httptest.NewServer"
 ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -421,6 +455,7 @@ if err != nil {
 }
 endsnippet
 
+<<<<<<< HEAD
 snippet example "func ExampleXYZ() { ... }"
 func Example${1:Method}() {
 	${0:${VISUAL}}
@@ -436,6 +471,8 @@ func Benchmark${1:Method}(b *testing.B) {
 }
 endsnippet
 
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 # variable declaration
 snippet var "var x Type [= ...]"
 var ${1:x} ${2:Type}${3: = ${0:value}}
@@ -457,6 +494,10 @@ if !reflect.DeepEqual(${1:expected}, ${2:actual}) {
 }
 endsnippet
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 global !p
 
 import re

@@ -4,6 +4,7 @@
 "
 " compiler/go.vim: Vim compiler file for Go.
 
+<<<<<<< HEAD
 if exists("g:current_compiler")
   finish
 endif
@@ -12,6 +13,12 @@ let g:current_compiler = "go"
 " don't spam the user when Vim is started in Vi compatibility mode
 let s:cpo_save = &cpo
 set cpo&vim
+=======
+if exists("current_compiler")
+  finish
+endif
+let current_compiler = "go"
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 
 if exists(":CompilerSet") != 2
   command -nargs=* CompilerSet setlocal <args>
@@ -20,9 +27,15 @@ endif
 let s:save_cpo = &cpo
 set cpo-=C
 if filereadable("makefile") || filereadable("Makefile")
+<<<<<<< HEAD
   CompilerSet makeprg=make
 else
   CompilerSet makeprg=go\ build
+=======
+    CompilerSet makeprg=make
+else
+    CompilerSet makeprg=go\ build
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endif
 
 " Define the patterns that will be recognized by QuickFix when parsing the
@@ -42,8 +55,12 @@ CompilerSet errorformat+=%-G%.%#                      " All lines not matching a
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
+<<<<<<< HEAD
 " restore Vi compatibility settings
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
 " vim: sw=2 ts=2 et
+=======
+" vim:ts=4:sw=4:et
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d

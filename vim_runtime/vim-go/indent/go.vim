@@ -9,7 +9,11 @@
 " - general line splits (line ends in an operator)
 
 if exists("b:did_indent")
+<<<<<<< HEAD
   finish
+=======
+	finish
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 endif
 let b:did_indent = 1
 
@@ -21,6 +25,7 @@ setlocal indentexpr=GoIndent(v:lnum)
 setlocal indentkeys+=<:>,0=},0=)
 
 if exists("*GoIndent")
+<<<<<<< HEAD
   finish
 endif
 
@@ -84,3 +89,60 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 
 " vim: sw=2 ts=2 et
+=======
+	finish
+endif
+
+" use shiftwidth function only if it's available
+if exists('*shiftwidth')
+	func s:sw()
+		return shiftwidth()
+	endfunc
+else
+	func s:sw()
+		return &sw
+	endfunc
+endif
+
+function! GoIndent(lnum)
+	let prevlnum = prevnonblank(a:lnum-1)
+	if prevlnum == 0
+		" top of file
+		return 0
+	endif
+
+	" grab the previous and current line, stripping comments.
+	let prevl = substitute(getline(prevlnum), '//.*$', '', '')
+	let thisl = substitute(getline(a:lnum), '//.*$', '', '')
+	let previ = indent(prevlnum)
+
+	let ind = previ
+
+	if prevl =~ '[({]\s*$'
+		" previous line opened a block
+		let ind += s:sw()
+	endif
+	if prevl =~# '^\s*\(case .*\|default\):$'
+		" previous line is part of a switch statement
+		let ind += s:sw()
+	endif
+	" TODO: handle if the previous line is a label.
+
+	if thisl =~ '^\s*[)}]'
+		" this line closed a block
+		let ind -= s:sw()
+	endif
+
+	" Colons are tricky.
+	" We want to outdent if it's part of a switch ("case foo:" or "default:").
+	" We ignore trying to deal with jump labels because (a) they're rare, and
+	" (b) they're hard to disambiguate from a composite literal key.
+	if thisl =~# '^\s*\(case .*\|default\):$'
+		let ind -= s:sw()
+	endif
+
+	return ind
+endfunction
+
+" vim:ts=4:sw=4:et
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d

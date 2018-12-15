@@ -11,6 +11,7 @@
 "
 " Options:
 "
+<<<<<<< HEAD
 "   g:go_asmfmt_autosave [default=0]
 "
 "       Flag to automatically call :Fmt when file is saved.
@@ -19,16 +20,27 @@
 let s:cpo_save = &cpo
 set cpo&vim
 
+=======
+"   g:go_asmfmt_autosave [default=1]
+"
+"       Flag to automatically call :Fmt when file is saved.
+
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 let s:got_fmt_error = 0
 
 " This is a trimmed-down version of the logic in fmt.vim.
 
+<<<<<<< HEAD
 function! go#asmfmt#Format() abort
+=======
+function! go#asmfmt#Format()
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
   " Save state.
   let l:curw = winsaveview()
 
   " Write the current buffer to a tempfile.
   let l:tmpname = tempname()
+<<<<<<< HEAD
   call writefile(go#util#GetLines(), l:tmpname)
 
   " Run asmfmt.
@@ -53,10 +65,34 @@ function! go#asmfmt#Format() abort
   silent edit!
   let &fileformat = old_fileformat
   let &syntax = &syntax
+=======
+  call writefile(getline(1, '$'), l:tmpname)
+
+  " Run asmfmt.
+  let path = go#path#CheckBinPath("asmfmt")
+  if empty(path)
+    return
+  endif
+  let out = system(path . ' -w ' . l:tmpname)
+
+  " If there's no error, replace the current file with the output.
+  if v:shell_error == 0
+    " Remove undo point caused by BufWritePre.
+    try | silent undojoin | catch | endtry
+
+    " Replace the current file with the temp file; then reload the buffer.
+    let old_fileformat = &fileformat
+    call rename(l:tmpname, expand('%'))
+    silent edit!
+    let &fileformat = old_fileformat
+    let &syntax = &syntax
+  endif
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
 
   " Restore the cursor/window positions.
   call winrestview(l:curw)
 endfunction
+<<<<<<< HEAD
 
 function! go#asmfmt#ToggleAsmFmtAutoSave() abort
   if go#config#AsmfmtAutosave()
@@ -74,3 +110,5 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 
 " vim: sw=2 ts=2 et
+=======
+>>>>>>> 9b6a50cb85f1e18e94ca5aace9ae9ca237de667d
